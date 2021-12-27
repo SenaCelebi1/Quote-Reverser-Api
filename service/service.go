@@ -57,13 +57,13 @@ func Quotes(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(string(jsonStr))
 	}
 
-	fizzbuzz := []models.QuotesNew{}
+	quotes := []models.QuotesNew{}
 
 	for k, v := range m {
-		fizzbuzz = append(fizzbuzz, models.QuotesNew{Author: k, Quotes: v})
+		quotes = append(quotes, models.QuotesNew{Author: k, Quotes: v})
 
 	}
 
-	_ = json.NewDecoder(r.Body).Decode(&fizzbuzz)
-	json.NewEncoder(w).Encode(fizzbuzz)
+	_ = json.NewDecoder(r.Body).Decode(&quotes)
+	json.NewEncoder(w).Encode(quotes)
 }
